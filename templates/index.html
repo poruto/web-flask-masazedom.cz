@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="keywords" content="Masáže, Veronika, TODO">
+        <meta name="author" content="PoruTo">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+        <script src="{{url_for('static', filename='jquery-3.6.0.min.js')}}"></script>
+        {% block head %}
+        {% endblock head %}
+    </head>
+    <body>
+    <header>
+        {% include 'nav.html' %}
+    </header>
+    {% block bContent %}
+    {% endblock bContent  %}
+    <div id="content_div">
+        {% block content %}
+        {% endblock content  %}
+    </div>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+    </body>
+    {% block script %}
+    {% endblock script %}
+</html>
