@@ -3,3 +3,27 @@
     font-family: 'Open Sans', sans-serif;
     color: black;
 }
+
+nav
+{
+    text-align: center;
+}
+
+.nav_a
+{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(189, 169, 58);
+    margin-left: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 150%;
+
+    transition: color 1.0s ease-out, background-color 1.0s ease-out;
+}
+
+.nav_a:hover
+{
+    color: rgb(97, 94, 77);
+    background-color: rgb(199, 197, 188, 0.44);
+}
