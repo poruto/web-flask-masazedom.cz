@@ -12,9 +12,22 @@
         {% endblock head %}
     </head>
     <body>
+        <div class="page_title_box">
+            <div class="page_title_1">
+                Masáže domů
+            </div>
+            <div class="page_title_2">
+                v srdci Kroměříže a okolí
+            </div>
+        </div>
         <header>
             {% include 'nav.html' %}
         </header>
+        <hr class="page_title_separator">
+        
+        <img class="logo_part_1" src="{{url_for('static', filename='images/logo_part_1.png')}}">
+
+        <br>
         {% block bContent %}
         {% endblock bContent  %}
         <div id="content_div">
