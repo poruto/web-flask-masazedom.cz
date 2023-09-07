@@ -4,7 +4,6 @@
 
     color: black;
     cursor:url("/static/images/cursor.png"), auto;
-
 }
 
 :root
@@ -141,7 +140,7 @@ nav
 
 .price_money
 {
-    font-size: 125%;
+    font-size: 150%;
     color:  rgb(71, 71, 71);
     filter: brightness(1.5);
     text-align: right;
