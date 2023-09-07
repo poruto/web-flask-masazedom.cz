@@ -1,8 +1,13 @@
 <nav>
     <div class="nav_box">
-        <a class="nav_a" id="home" href=" {{ url_for('index') }}">Domů</a>
-        <a class="nav_a" id="home" href=" {{ url_for('index') }}">Rezervace</a>
-        <a class="nav_a" id="home" href=" {{ url_for('cenik') }}">Ceník</a>
-        <a class="nav_a" id="home" href=" {{ url_for('index') }}">Kontakt</a>
+        <a id="home" class="nav_a" id="home" href=" {{ url_for('index') }}">Domů</a>
+        <a id="reservation" class="nav_a" id="home" href=" {{ url_for('rezervace') }}">Rezervace</a>
+        <a id="cenik" class="nav_a" id="home" href=" {{ url_for('cenik') }}">Ceník</a>
+        <a id="kontakt" class="nav_a" id="home" href=" {{ url_for('kontakt') }}">Kontakt</a>
     </div>
  </nav>
+
+ <script>
+    document.getElementById("{{nav_page}}").style.color = "rgb(97, 94, 77, 1)";
+    document.getElementById("{{nav_page}}").style.backgroundColor = "rgb(199, 197, 188, 0.44)"; 
+ </script>

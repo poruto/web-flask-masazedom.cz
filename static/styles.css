@@ -45,6 +45,12 @@
     opacity: 0.3;
 }
 
+.paragraph_1
+{
+    width: 50%;
+    font-size: 125%;
+}
+
 nav
 {
     text-align: center;

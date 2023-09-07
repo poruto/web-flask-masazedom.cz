@@ -20,11 +20,25 @@ from inject_global_vars import *
 
 @app.route('/')
 def index():
-    return render_template("main.html")
+    return render_template("main.html",
+                           nav_page="home")
 
 @app.route('/cenik')
 def cenik():
-    return render_template("cenik.html")
+    return render_template("cenik.html",
+                           nav_page="cenik")
+
+@app.route('/rezervace')
+def rezervace():
+    return render_template("rezervace.html",
+                           nav_page="reservation")
+
+@app.route('/kontakt')
+def kontakt():
+    return render_template("kontakt.html",
+                           nav_page="kontakt")
+
+
 
 if __name__ == '__main__':
     app.run(host=HOST, port=PORT, debug=True)
