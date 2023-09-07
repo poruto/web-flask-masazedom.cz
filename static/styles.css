@@ -2,6 +2,8 @@
 {
     font-family: 'Open Sans', sans-serif;
     color: black;
+    cursor:url("/static/images/cursor.png"), auto;
+
 }
 
 :root
@@ -9,6 +11,12 @@
     --light_wood_color: rgb(222, 184, 135, 0.5);
     --nav_a_color: rgb(189, 169, 58);
     --page_title_separator_color: rgb(214, 214, 37);
+}
+
+#content_box
+{
+    width: 100%;
+    padding: 30px;
 }
 
 .page_title_box
@@ -51,7 +59,6 @@ nav
     padding: 10px;
     border-radius: 5px;
     font-size: 150%;
-
     transition: color 1.0s ease-out, background-color 1.0s ease-out;
 }
 
@@ -89,7 +96,6 @@ nav
     margin-bottom: 60px;
     margin-top: 25px;
     transition: filter 1s ease-out, width 0.75s ease-out;
-    cursor: pointer;
 }
 
 .price:hover
