@@ -13,6 +13,11 @@
     --page_title_separator_color: rgb(214, 214, 37);
 }
 
+body
+{
+    overflow-x: hidden;
+}
+
 #content_box
 {
     width: 100%;
