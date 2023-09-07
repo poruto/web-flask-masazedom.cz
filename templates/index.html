@@ -23,9 +23,9 @@
         <header>
             {% include 'nav.html' %}
         </header>
-        <hr class="page_title_separator">
+        <hr id="page_title_separator">
         
-        <img class="logo_part_1" src="{{url_for('static', filename='images/logo_part_1.png')}}">
+        <img id="logo_part_1" src="{{url_for('static', filename='images/logo_part_1.png')}}">
 
         <br>
         {% block bContent %}
@@ -38,6 +38,13 @@
             {% include 'footer.html' %}
         </footer>
     </body>
+
+    <script>
+          $("#page_title_separator").animate({ width: '50%' }, {duration: 1500, queue: false});
+          $("#logo_part_1").animate({ opacity:'0.03' }, {duration: 1500, queue: false});
+    </script>
+
+
     {% block script %}
     {% endblock script %}
 </html>
