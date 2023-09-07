@@ -65,7 +65,7 @@ nav
 {
     filter: blur(1px);
     opacity: 0.15;
-    position: absolute; 
+    position:fixed;
     left: 0; 
     right: 0; 
     bottom: 0;
@@ -103,6 +103,11 @@ nav
     font-size: 250%;
     text-align: center;
     margin-bottom: 25px;
+}
+
+.price_logo
+{
+    max-width: 75px;
 }
 
 .price_time
