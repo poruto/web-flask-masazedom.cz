@@ -4,6 +4,13 @@
     color: black;
 }
 
+:root
+{
+    --light_wood_color: rgb(222, 184, 135, 0.5);
+    --nav_a_color: rgb(189, 169, 58);
+    --page_title_separator_color: rgb(214, 214, 37);
+}
+
 .page_title_box
 {
     position: absolute;
@@ -23,7 +30,7 @@
 
 .page_title_separator
 {
-    border-color: rgb(214, 214, 37);
+    border-color: var(--page_title_separator_color);
     width: 50%;
     margin: 0 auto;
     margin-top: 6px;
@@ -39,7 +46,7 @@ nav
 {
     display: inline-block;
     text-decoration: none;
-    color: rgb(189, 169, 58);
+    color: var(--nav_a_color);
     margin-left: 50px;
     padding: 10px;
     border-radius: 5px;
@@ -64,4 +71,57 @@ nav
     bottom: 0;
     margin-left: auto; 
     margin-right: auto; 
+}
+
+.price
+{
+    background-color: var(--light_wood_color);
+    padding: 50px;
+    border-radius: 50px;
+    width: 500px;
+    min-width: 500px;
+    display: block;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    margin-top: 25px;
+    transition: filter 1s ease-out, width 0.75s ease-out;
+}
+
+.price:hover
+{
+    filter: brightness(1.25);
+    width: 550px;
+}
+
+.price_title
+{
+    font-size: 250%;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.price_time
+{
+    font-size: 200%;
+}
+
+.price_body_parts
+{
+    font-style: italic;
+    font-size: 150%;
+}
+
+.price_box
+{
+    text-align: center;
+}
+
+.price_money
+{
+    font-size: 125%;
+    color:  rgb(71, 71, 71);
+    filter: brightness(1.5);
+    text-align: right;
 }

@@ -20,8 +20,11 @@ from inject_global_vars import *
 
 @app.route('/')
 def index():
-    return render_template("main.html",
-    nav_name="home")
+    return render_template("main.html")
+
+@app.route('/cenik')
+def cenik():
+    return render_template("cenik.html")
 
 if __name__ == '__main__':
     app.run(host=HOST, port=PORT, debug=True)
