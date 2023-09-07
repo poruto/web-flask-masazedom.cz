@@ -87,6 +87,7 @@ nav
     margin-bottom: 60px;
     margin-top: 25px;
     transition: filter 1s ease-out, width 0.75s ease-out;
+    cursor: pointer;
 }
 
 .price:hover
