@@ -16,17 +16,17 @@ class EmailClient:
         self.server.login(email, password)
     
     def send_email(self, receiver_email, message):
-        self.server.sendmail(self.email, receiver_email, message)
+        self.server.sendmail(self.email, receiver_email, message.encode())
     
     def send_email_self(self, message):
-        self.send_email(self, self.email, message)
+        self.send_email(self.email, message)
     
     def quit(self):
         self.server.quit()
 
 def __run_tests():
     # Testing E-mail
-    client = EmailClient(GMAIL_SERVER, "masazedomukm@gmail.com", "Soudkynebarbara123")
+    client = EmailClient(GMAIL_SERVER, "masazedomukm@gmail.com", "kmrartrbwgkczosm")
     client.send_email_self("Tohle je automatický testovací email")
     client.quit()
 
