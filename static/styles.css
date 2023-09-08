@@ -13,6 +13,23 @@
     --page_title_separator_color: rgb(214, 214, 37);
 }
 
+.reservation_box
+{
+    background-color: var(--light_wood_color);
+    padding: 50px;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 600px;
+    max-width: 600px;
+    max-height: 600px;
+    height: 600px;
+}
+
+.reservation_title
+{
+    font-size: 200%;
+}
+
 body
 {
     overflow-x: hidden;
