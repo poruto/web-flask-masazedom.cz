@@ -1,5 +1,6 @@
 from flask import *
 from flask_session import Session
+from email_client import EmailClient, GMAIL_SERVER
 
 
 # Settings
@@ -32,6 +33,76 @@ def cenik():
 def rezervace():
     return render_template("rezervace.html",
                            nav_page="reservation")
+
+def get_my_client_email():
+    return EmailClient(GMAIL_SERVER, "masazedomukm@gmail.com", "kmrartrbwgkczosm")
+
+@app.route('/rezervace_create/', methods=(['POST']))
+def rezervace_create():
+    created = 1
+
+    name = request.form["reservation_name"]
+    surname = request.form["reservation_surname"]
+    year = request.form["reservation_year"]
+    email = request.form["reservation_email"]
+    phone = request.form["reservation_phone"]
+    date = request.form["reservation_date"]
+    time = request.form["reservation_time"]
+
+    print("Name", name)
+    print("Surname", surname)
+    print("Year", year)
+    print("Email", email)
+    print("Phone", phone)
+    print("Date", date)
+    print("Time", time)
+
+    errmsg = ""
+
+    if len(name) == 0:
+        errmsg += "Jméno "
+
+    if len(surname) == 0:
+        errmsg += "Příjmení "
+
+    if len(year) == 0:
+        errmsg += "Rok narození "
+    
+    if len(email) == 0:
+        errmsg += "Email "
+
+    if len(phone) < 9 or len(phone) > 15:
+        errmsg += "Telefon "
+    
+    if len(date) == 0:
+        errmsg += "Datum "
+    
+    if len(time) == 0:
+        errmsg += "Čas "
+    
+    if len(errmsg) > 0:
+        created = 0
+
+
+    #  Send notification to own email
+    create_email = ("Založena rezervace v systému\nJméno: %s\nPříjmení: %s\nRok narození: %s\nEmail: %s\nTelefon: %s\nDatum: %s\nČas: %s") % (
+        name, surname, year, email, phone, date, time
+    )
+
+    client = get_my_client_email()
+    client.send_email_self(create_email, "Založení rezervace %s %s %s" % (name, surname, date))
+
+    # Send notification to customer's email
+    client.send_email(email, "Tohle je testovací potvrzení rezervace!", "Masáže domů - Potvrzení rezervace")
+
+    #  Stop connection to the mail server
+    client.quit()
+
+
+    return render_template("rezervace_create.html",
+                           nav_page="reservation",
+                           created=created,
+                           errmsg=errmsg)
 
 @app.route('/kontakt')
 def kontakt():

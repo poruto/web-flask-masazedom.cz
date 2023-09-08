@@ -39,20 +39,20 @@
         <div class="reservation_title">
             Rezervace
         </div>
-        <form>
+        <form action="{{url_for('rezervace_create')}}" method="post">
             <label class="reservation_label" for="reservation_name">Jméno</label>
-            <input style="max-width: 75px; width: 75px;" id="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
+            <input style="max-width: 75px; width: 75px;" id="reservation_name" name="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
             <label class="reservation_label" for="reservation_surname">Přijmení</label>
-            <input style="max-width: 75px; width: 75px;" id="reservation_surname" type="text" class="reservation_input_text" placeholder="Přijmení">
+            <input style="max-width: 75px; width: 75px;" id="reservation_surname" name="reservation_surname" type="text" class="reservation_input_text" placeholder="Přijmení">
             <br>
             <label class="reservation_label" for="reservation_year">Rok narození</label>
-            <input style="max-width: 50px; width: 50px;" id="reservation_year" type="number" min="1900" max="2100" class="reservation_input_text" placeholder="2000" value="2000">
+            <input style="max-width: 50px; width: 50px;" id="reservation_year" name="reservation_year" type="number" min="1900" max="2100" class="reservation_input_text" placeholder="2000" value="2000">
             <br>
             <label class="reservation_label" for="reservation_email">E-mail</label>
-            <input style="max-width: 200px; width: 200px;" id="reservation_email" type="text" class="reservation_input_text" placeholder="ukazkovy@email.cz">
+            <input style="max-width: 200px; width: 200px;" id="reservation_email" name="reservation_email" type="text" class="reservation_input_text" placeholder="ukazkovy@email.cz">
             <br>
             <label class="reservation_label" for="reservation_phone">Telefonní číslo</label>
-            <input style="max-width: 100px; width: 100px;" id="reservation_phone" type="text" class="reservation_input_text" placeholder="000 000 000">
+            <input style="max-width: 100px; width: 100px;" id="reservation_phone" name="reservation_phone" type="text" class="reservation_input_text" placeholder="000 000 000">
             <br>
             <br>
 
@@ -61,9 +61,9 @@
             </p>
 
             <label class="reservation_label" for="reservation_date">Datum</label>
-            <input style="max-width: 100px; width: 100px;" id="reservation_date" type="date" class="reservation_input_text" placeholder="">
+            <input style="max-width: 100px; width: 100px;" id="reservation_date" name="reservation_date" type="date" class="reservation_input_text" placeholder="">
             <label class="reservation_label" for="reservation_time">Čas</label>
-            <input style="max-width: 100px; width: 100px;" id="reservation_time" type="text" class="reservation_input_text" placeholder="16:00">
+            <input style="max-width: 100px; width: 100px;" id="reservation_time" name="reservation_time" type="text" class="reservation_input_text" placeholder="16:00">
             
             <br>
             <input type="submit" class="reservation_submit_button" value="Potvrdit">

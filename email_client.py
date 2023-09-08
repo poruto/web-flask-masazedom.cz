@@ -15,11 +15,13 @@ class EmailClient:
         self.server = smtplib.SMTP_SSL(serverip, port, context=context)
         self.server.login(email, password)
     
-    def send_email(self, receiver_email, message):
-        self.server.sendmail(self.email, receiver_email, message.encode())
+    def send_email(self, receiver_email, message, subject):
+        msg = 'Subject: {}\n\n'.format(subject)
+        msg += message
+        self.server.sendmail(self.email, receiver_email, msg.encode())
     
-    def send_email_self(self, message):
-        self.send_email(self.email, message)
+    def send_email_self(self, message, subject):
+        self.send_email(self.email, message, subject)
     
     def quit(self):
         self.server.quit()
@@ -27,7 +29,7 @@ class EmailClient:
 def __run_tests():
     # Testing E-mail
     client = EmailClient(GMAIL_SERVER, "masazedomukm@gmail.com", "kmrartrbwgkczosm")
-    client.send_email_self("Tohle je automatický testovací email")
+    client.send_email_self("Tohle je automatický testovací email", "Test Mail")
     client.quit()
 
 if __name__ == "__main__":

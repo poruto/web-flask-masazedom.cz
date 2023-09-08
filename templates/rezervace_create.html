@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Rezervace | {{project_name}}
+{% endblock title  %}
+
+{% block content %}
+
+    <div class="reservation_title">
+        Rezervace
+    </div>
+
+    {% if created == 0 %}
+        <p>
+            Žádost nebyla poslána ke zpracování.
+        </p>
+
+        <p>
+            Nastala nějaká technická nebo provozní chyba.
+            Prosíme, ověřte, zda jste správně vyplnili všechny požadované údaje (všechny)
+            a zkuste provést rezervaci znovu.
+        </p>
+
+        <p style="margin-bottom: 0;"><b>Nevyplnili jste následující údaje:</b></p>
+        
+        <p style="margin-top: 5px">
+            {{errmsg}}
+        </p>
+
+    {% elif created == 1 %}
+        <p>
+            Žádost byla úspěšně odeslána ke zpracování. Jakmile to bude možné, ozvu se Vám.
+        </p>
+
+        <p>
+            S pozdravem Veronika
+        </p>
+    {% endif %}
+
+     </div>
+{% endblock content %}
