@@ -38,6 +38,10 @@ def kontakt():
     return render_template("kontakt.html",
                            nav_page="kontakt")
 
+@app.route('/admin')
+def admin():
+    return render_template("admin.html")
+
 
 
 if __name__ == '__main__':
