@@ -11,6 +11,8 @@
     --light_wood_color: rgb(222, 184, 135, 0.5);
     --nav_a_color: rgb(189, 169, 58);
     --page_title_separator_color: rgb(214, 214, 37);
+    --gray_tr_bg: rgb(199, 197, 188, 0.44); 
+    --color-yellowish: rgb(97, 94, 77);
 }
 
 .reservation_box
@@ -21,13 +23,49 @@
     margin: 0 auto;
     width: 600px;
     max-width: 600px;
-    max-height: 600px;
-    height: 600px;
 }
 
 .reservation_title
 {
     font-size: 200%;
+    margin-bottom: 15px;
+}
+
+.reservation_input_text
+{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+
+.reservation_submit_button
+{
+    border: none;
+    background-color: var(--light_wood_color);
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 130%;
+
+    margin-right: 0;
+    margin-left: auto;
+
+    display:block;
+
+    transition: color 1.0s ease-out, background-color 1.0s ease-out, border-radius 0.5s ease-out;
+}
+
+.reservation_submit_button:hover
+{
+    background-color: var(--gray_tr_bg);
+    border-radius: 15px;
+}
+
+.reservation_label
+{
+    font-size: 125%;
 }
 
 body
@@ -92,8 +130,8 @@ nav
 
 .nav_a:hover
 {
-    color: rgb(97, 94, 77);
-    background-color: rgb(199, 197, 188, 0.44); 
+    color: var(--color-yellowish);
+    background-color: var(--gray_tr_bg);
 }
 
 #logo_part_1
