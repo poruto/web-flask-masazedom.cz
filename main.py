@@ -1,6 +1,6 @@
 from flask import *
 from flask_session import Session
-from email_client import EmailClient, GMAIL_SERVER
+from email_tools import *
 
 
 # Settings
@@ -35,7 +35,7 @@ def rezervace():
                            nav_page="reservation")
 
 def get_my_client_email():
-    return EmailClient(GMAIL_SERVER, "masazedomukm@gmail.com", "kmrartrbwgkczosm")
+    return EmailClient(GMAIL_SERVER, config.settings["email"], config.settings["password"])
 
 @app.route('/rezervace_create/', methods=(['POST']))
 def rezervace_create():
@@ -60,43 +60,46 @@ def rezervace_create():
     errmsg = ""
 
     if len(name) == 0:
-        errmsg += "Jméno "
+        errmsg += "Nevyplnili jste Jméno. "
 
     if len(surname) == 0:
-        errmsg += "Příjmení "
+        errmsg += "Nevyplnili jste Příjmení. "
 
     if len(year) == 0:
-        errmsg += "Rok narození "
+        errmsg += "Nevyplnili jste Rok narození. "
     
     if len(email) == 0:
-        errmsg += "Email "
+        errmsg += "Nevyplnili jste Email. "
+    elif not validate_email(email):
+        errmsg += "Email je nesprávně zadaný! "
 
     if len(phone) < 9 or len(phone) > 15:
-        errmsg += "Telefon "
+        errmsg += "Nevyplnili jste Telefon. "
     
     if len(date) == 0:
-        errmsg += "Datum "
+        errmsg += "Nevyplnili jste Datum. "
     
     if len(time) == 0:
-        errmsg += "Čas "
+        errmsg += "Nevyplnili jste Čas. "
     
     if len(errmsg) > 0:
         created = 0
 
+    # If everything valid, try to send email
+    if created == 1:
+        #  Send notification to own email
+        create_email = ("Založena rezervace v systému\nJméno: %s\nPříjmení: %s\nRok narození: %s\nEmail: %s\nTelefon: %s\nDatum: %s\nČas: %s") % (
+            name, surname, year, email, phone, date, time
+        )
 
-    #  Send notification to own email
-    create_email = ("Založena rezervace v systému\nJméno: %s\nPříjmení: %s\nRok narození: %s\nEmail: %s\nTelefon: %s\nDatum: %s\nČas: %s") % (
-        name, surname, year, email, phone, date, time
-    )
+        client = get_my_client_email()
+        client.send_email_self(create_email, "Založení rezervace %s %s %s" % (name, surname, date))
 
-    client = get_my_client_email()
-    client.send_email_self(create_email, "Založení rezervace %s %s %s" % (name, surname, date))
+        # Send notification to customer's email
+        client.send_email(email, "Tohle je testovací potvrzení rezervace!", "Masáže domů - Potvrzení rezervace")
 
-    # Send notification to customer's email
-    client.send_email(email, "Tohle je testovací potvrzení rezervace!", "Masáže domů - Potvrzení rezervace")
-
-    #  Stop connection to the mail server
-    client.quit()
+        #  Stop connection to the mail server
+        client.quit()
 
 
     return render_template("rezervace_create.html",

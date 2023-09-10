@@ -1,4 +1,5 @@
 import smtplib, ssl
+import re  
 
 GMAIL_SERVER = "smtp.gmail.com"
 
@@ -26,6 +27,13 @@ class EmailClient:
     def quit(self):
         self.server.quit()
 
+#  ***************************** TOOLS ***************************** 
+def validate_email(email):  
+    if re.match(r"[^@]+@[^@]+\.[^@]+", email):  
+        return True  
+    return False  
+
+#  ***************************** TESTS ***************************** 
 def __run_tests():
     # Testing E-mail
     client = EmailClient(GMAIL_SERVER, "masazedomukm@gmail.com", "kmrartrbwgkczosm")
