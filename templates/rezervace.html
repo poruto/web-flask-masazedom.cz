@@ -103,6 +103,9 @@
         const reservationTimeSelElmnt = document.getElementById("reservation_time");
         const reservationAvailableElmnt = document.getElementById("available");
 
+        // Min date select
+        reservationDateElmnt.min = new Date().toISOString().split('T')[0];
+
         const urlCheckIfReservationAvailable = "{{ url_for('is_reservation_available') }}"
 
         function isWeekend(date = new Date()) {
@@ -128,11 +131,11 @@
                     success: function(data) {
                         if (data == "y")
                         {
-                            reservationAvailableElmnt.innerText = "Termín je dostupný.";
+                            reservationAvailableElmnt.innerHTML = "<div style='color: #51a327'>Termín je dostupný.</div>";
                         }
                         else if (data == "n")
                         {
-                            reservationAvailableElmnt.innerText = "Termín není dostupný!";
+                            reservationAvailableElmnt.innerHTML = "<div style='color: red'>Termín není dostupný!</div>";
                         }
                     },
                     error: function(jqXHR,error, errorThrown) {  

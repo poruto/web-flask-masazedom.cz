@@ -45,7 +45,6 @@ def is_reservation_available(date=None, time=None):
         if rm.is_available(date, time):
             return "y"
         else:
-            print("here")
             return "n"
     else:
         return "n"
