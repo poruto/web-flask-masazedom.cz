@@ -25,6 +25,25 @@
     max-width: 600px;
 }
 
+.reservation_notes
+{
+    width: 100%;
+    min-height: 150px;
+    border-radius: 10px;
+    border: none;
+    resize: none;
+    font-size: 115%;
+    padding: 5px;
+}
+
+.reservation_select
+{
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 105%;
+    border: none;
+}
+
 .reservation_title
 {
     font-size: 200%;
@@ -36,6 +55,7 @@
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
+    font-size: 105%;
     border: none;
     text-align: center;
 }
