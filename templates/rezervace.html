@@ -57,7 +57,7 @@
             <br>
 
             <p>
-                Termíny během týdne jsou stanoveny na 16:00 a dále, ale o víkendech jsem flexibilní a časy se mohou měnit podle potřeb. Víkendy jsou více volné a spontánní, což mi umožňuje Vám lépe vyhovět.
+                Termíny během týdne se liší podle dne, ale o víkendech jsem flexibilní a časy se mohou měnit podle potřeb. Víkendy jsou více volné a spontánní, což mi umožňuje Vám lépe vyhovět.
             </p>
 
             <label class="reservation_label" for="reservation_date">Datum</label>
@@ -67,9 +67,6 @@
             <label for="reservation_time" class="reservation_label">Čas</label>
 
             <select id="reservation_time" class="reservation_select" name="reservation_time" size="1">  
-                <option value="16:00"> 16:00 </option> 
-                <option value="17:00"> 17:00 </option>  
-                <option value="18:00"> 18:00 </option>   
             </select>  
             
             <br>
@@ -89,9 +86,7 @@
 
             <label class="reservation_label" for="reservation_notes">Prostor pro Vaše poznámky</label>
             <br>
-            <textarea name="reservation_notes" class="reservation_notes">
-
-            </textarea>
+            <textarea name="reservation_notes" class="reservation_notes"></textarea>
 
             <br>
             <input type="submit" class="reservation_submit_button" value="Potvrdit">
@@ -111,15 +106,37 @@
             var reservationTimeSelElmnt = document.getElementById("reservation_time");
             var date = new Date(reservationDateElmnt.value);
 
-           if (!isWeekend(date))
-           {
-                reservationTimeSelElmnt.innerHTML = '<option value="16:00">16:00</option> <option value="17:00">17:00</option><option value="18:00">18:00</option>';
-           }
-           else
-           {
-                reservationTimeSelElmnt.innerHTML = '<option value="13:00">13:00</option><option value="14:00">14:00</option><option value="15:00">15:00</option><option value="16:00">16:00</option><option value="17:00">17:00</option><option value="18:00">18:00</option>';
-           }
+            var dayNumber = date.getDay();
 
+           // Weekend
+           if (isWeekend(date))
+           {
+                reservationTimeSelElmnt.innerHTML = '';
+                reservationTimeSelElmnt.innerHTML += '<option value="9:00">9:00</option>';
+                reservationTimeSelElmnt.innerHTML += '<option value="11:30">11:30</option>';
+                reservationTimeSelElmnt.innerHTML += '<option value="14:00">14:00</option>';
+                reservationTimeSelElmnt.innerHTML += '<option value="16:30">16:30</option>';
+                reservationTimeSelElmnt.innerHTML += '<option value="19:00">19:00</option>';
+           }
+           // Monday, Tuesday, Friday
+           else if (dayNumber == 1 || dayNumber == 2 || dayNumber == 5)
+           {
+                reservationTimeSelElmnt.innerHTML = '';
+                reservationTimeSelElmnt.innerHTML += '<option value="16:00">16:00</option>';
+                reservationTimeSelElmnt.innerHTML += '<option value="18:00">18:00</option>';
+           }
+           // Wednesday
+           else if (dayNumber == 3)
+           {
+                reservationTimeSelElmnt.innerHTML = '';
+                reservationTimeSelElmnt.innerHTML += '<option value="16:00">16:00</option>';
+           }
+           // Thursday
+           else if (dayNumber == 4)
+           {
+                reservationTimeSelElmnt.innerHTML = '';
+                reservationTimeSelElmnt.innerHTML += '<option value="18:00">18:00</option>';
+           }
         }
     </script>
 {% endblock script %}

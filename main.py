@@ -1,6 +1,7 @@
 from flask import *
 from flask_session import Session
 from email_tools import *
+from reservations import *
 
 
 # Settings
@@ -37,6 +38,13 @@ def rezervace():
 def get_my_client_email():
     return EmailClient(GMAIL_SERVER, config.settings["email"], config.settings["password"])
 
+@app.route('/rezervace/check/<date>/<time>')
+def is_reservation_available(date, time):
+    if date != None and time != None:
+        ...
+    else:
+        return "n"
+
 @app.route('/rezervace_create/', methods=(['POST']))
 def rezervace_create():
     created = 1
@@ -47,7 +55,13 @@ def rezervace_create():
     email = request.form["reservation_email"]
     phone = request.form["reservation_phone"]
     date = request.form["reservation_date"]
-    time = request.form["reservation_time"]
+    massage_type = request.form["reservation_type"]
+    notes = request.form["reservation_notes"]
+
+    time = ""
+
+    if "reservation_time" in request.form:
+        time = request.form["reservation_time"]
 
     print("Name", name)
     print("Surname", surname)
@@ -88,8 +102,16 @@ def rezervace_create():
     # If everything valid, try to send email
     if created == 1:
         #  Send notification to own email
-        create_email = ("Založena rezervace v systému\nJméno: %s\nPříjmení: %s\nRok narození: %s\nEmail: %s\nTelefon: %s\nDatum: %s\nČas: %s") % (
-            name, surname, year, email, phone, date, time
+        create_email = ("Založena rezervace v systému\nJméno: %s "
+                        "\nPříjmení: %s"
+                        "\nRok narození: %s"
+                        "\nEmail: %s"
+                        "\nTelefon: %s"
+                        "\nDatum: %s"
+                        "\nČas: %s"
+                        "\nTyp masáže: %s"
+                        "\nPoznámky: %s") % (
+            name, surname, year, email, phone, date, time, massage_type, notes
         )
 
         client = get_my_client_email()
@@ -119,4 +141,5 @@ def admin():
 
 
 if __name__ == '__main__':
+    rm = ReservationManager()
     app.run(host=HOST, port=PORT, debug=True)
