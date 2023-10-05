@@ -38,10 +38,15 @@ def rezervace():
 def get_my_client_email():
     return EmailClient(GMAIL_SERVER, config.settings["email"], config.settings["password"])
 
+@app.route('/rezervace/check')
 @app.route('/rezervace/check/<date>/<time>')
-def is_reservation_available(date, time):
+def is_reservation_available(date=None, time=None):
     if date != None and time != None:
-        ...
+        if rm.is_available(date, time):
+            return "y"
+        else:
+            print("here")
+            return "n"
     else:
         return "n"
 
@@ -95,12 +100,17 @@ def rezervace_create():
     
     if len(time) == 0:
         errmsg += "Nevyplnili jste Čas. "
+
+    if not rm.is_available(date, time):
+        errmsg += "Vámi zvolený termín není dostupný! "
     
     if len(errmsg) > 0:
         created = 0
 
     # If everything valid, try to send email
     if created == 1:
+        rm.create_reservation(str(name), str(surname), str(year), str(email), str(phone), str(date), str(time), str(massage_type))
+
         #  Send notification to own email
         create_email = ("Založena rezervace v systému\nJméno: %s "
                         "\nPříjmení: %s"

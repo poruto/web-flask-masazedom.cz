@@ -77,6 +77,12 @@
     transition: color 1.0s ease-out, background-color 1.0s ease-out, border-radius 0.5s ease-out;
 }
 
+.reservation_available
+{
+    margin: 0px;
+}
+
+
 .reservation_submit_button:hover
 {
     background-color: var(--gray_tr_bg);

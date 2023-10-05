@@ -66,9 +66,12 @@
 
             <label for="reservation_time" class="reservation_label">Čas</label>
 
-            <select id="reservation_time" class="reservation_select" name="reservation_time" size="1">  
+            <select onchange="isReservationAvailable()" id="reservation_time" class="reservation_select" name="reservation_time" size="1">  
             </select>  
-            
+
+            <br>
+            <p class="reservation_available" id="available"></p>
+
             <br>
             <br>
 
@@ -96,16 +99,52 @@
 
 {% block script %}
     <script>
+        const reservationDateElmnt = document.getElementById("reservation_date");
+        const reservationTimeSelElmnt = document.getElementById("reservation_time");
+        const reservationAvailableElmnt = document.getElementById("available");
+
+        const urlCheckIfReservationAvailable = "{{ url_for('is_reservation_available') }}"
+
         function isWeekend(date = new Date()) {
         return date.getDay() === 6 || date.getDay() === 0;
         }
 
+        function isReservationAvailable()
+        {
+            var date = reservationDateElmnt.value;
+            var time = reservationTimeSelElmnt.value;
+
+            if (date == "" || time == "")
+            {
+                console.log("Date or time not selected");
+                return;
+            }
+            else
+            {
+                var url = urlCheckIfReservationAvailable + "/" + date + "/" + time;
+
+                $.ajax({
+                    url: url,
+                    success: function(data) {
+                        if (data == "y")
+                        {
+                            reservationAvailableElmnt.innerText = "Termín je dostupný.";
+                        }
+                        else if (data == "n")
+                        {
+                            reservationAvailableElmnt.innerText = "Termín není dostupný!";
+                        }
+                    },
+                    error: function(jqXHR,error, errorThrown) {  
+                        // TODO IF ERROR
+                    },
+                });
+            }
+        }
+
         function onDateChange()
         {
-            var reservationDateElmnt = document.getElementById("reservation_date");
-            var reservationTimeSelElmnt = document.getElementById("reservation_time");
             var date = new Date(reservationDateElmnt.value);
-
             var dayNumber = date.getDay();
 
            // Weekend
@@ -137,6 +176,8 @@
                 reservationTimeSelElmnt.innerHTML = '';
                 reservationTimeSelElmnt.innerHTML += '<option value="18:00">18:00</option>';
            }
+
+           isReservationAvailable()
         }
     </script>
 {% endblock script %}

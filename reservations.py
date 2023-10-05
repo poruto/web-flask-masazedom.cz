@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 
 class Reservation:
     def __init__(self, name, surname, year, email, phone, date, time, massage_type, active):
@@ -55,7 +56,7 @@ class ReservationManager:
         data = {}
 
         for r in self.reservations:
-            data[r.get_id] = r.get_data()
+            data[r.get_id()] = r.get_data()
         
         with open('data.json', 'w', encoding="UTF-8") as file:
             json.dump(data, file)
@@ -67,11 +68,13 @@ class ReservationManager:
                 data = json.load(file)
 
                 for rData in data:
-                    r = Reservation(rData["name"], rData["surname"], rData["year"], rData["email"],
-                                    rData["phone"], rData["date"], rData["time"], rData["massage_type"], rData["active"])
+                    r = Reservation(data[rData]["name"], data[rData]["surname"], data[rData]["year"], data[rData]["email"],
+                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["active"])
                     self.reservations.append(r)
 
         except FileNotFoundError:
+            pass
+        except JSONDecodeError:
             pass
 
         
