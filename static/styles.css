@@ -34,6 +34,7 @@
     resize: none;
     font-size: 115%;
     padding: 5px;
+    opacity: 80%;
 }
 
 .reservation_select
@@ -58,6 +59,7 @@
     font-size: 105%;
     border: none;
     text-align: center;
+    opacity: 80%;
 }
 
 .reservation_submit_button
@@ -81,7 +83,6 @@
 {
     margin: 0px;
 }
-
 
 .reservation_submit_button:hover
 {

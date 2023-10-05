@@ -70,7 +70,7 @@
             </select>  
 
             <br>
-            <p class="reservation_available" id="available"></p>
+            <div class="reservation_available" id="available"></div>
 
             <br>
             <br>
@@ -79,9 +79,12 @@
 
             <br>
             <select style="margin-top: 3px; width: 75%;" class="reservation_select" name="reservation_type" size="1">  
-                <option value="typ1"> Typ1 </option> 
-                <option value="typ2"> Typ2 </option> 
-                <option value="typ3"> Typ3 </option> 
+                <option value="Masáž záda + šíje 60 minut základní masáž">Masáž záda + šíje 60 minut základní masáž</option> 
+                <option value="Masáž záda + nohy 60 minut základní masáž">Masáž záda + nohy 60 minut základní masáž</option> 
+                <option value="Masáž záda + nohy 60 minut masáž s co nejmenším zásahem do intimity">Masáž záda + nohy 60 minut masáž s co nejmenším zásahem do intimity</option> 
+                <option value="Masáž záda + šíje + nohy + ruce 90 minut celotělová">Masáž záda + šíje + nohy + ruce	90 minut celotělová</option>
+                <option value="60 minut, dle vlastního výběru">60 minut, dle vlastního výběru</option>
+                <option value="90 minut, dle vlastního výběru">90 minut, dle vlastního výběru</option>
             </select>  
 
             <br>
@@ -135,7 +138,7 @@
                         }
                         else if (data == "n")
                         {
-                            reservationAvailableElmnt.innerHTML = "<div style='color: red'>Termín není dostupný!</div>";
+                            reservationAvailableElmnt.innerHTML = "<div style='color: red'>Termín je obsazen!</div>";
                         }
                     },
                     error: function(jqXHR,error, errorThrown) {  
