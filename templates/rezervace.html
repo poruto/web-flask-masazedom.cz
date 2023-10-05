@@ -61,12 +61,12 @@
             </p>
 
             <label class="reservation_label" for="reservation_date">Datum</label>
-            <input style="width: 110px;" id="reservation_date" name="reservation_date" type="date" class="reservation_input_text" placeholder="">
+            <input onchange="onDateChange()" style="width: fit-content;" id="reservation_date" name="reservation_date" type="date" class="reservation_input_text" placeholder="">
 
 
             <label for="reservation_time" class="reservation_label">Čas</label>
 
-            <select class="reservation_select" name="reservation_time" size="1">  
+            <select id="reservation_time" class="reservation_select" name="reservation_time" size="1">  
                 <option value="16:00"> 16:00 </option> 
                 <option value="17:00"> 17:00 </option>  
                 <option value="18:00"> 18:00 </option>   
@@ -98,3 +98,28 @@
         </form>
      </div>
 {% endblock content %}
+
+{% block script %}
+    <script>
+        function isWeekend(date = new Date()) {
+        return date.getDay() === 6 || date.getDay() === 0;
+        }
+
+        function onDateChange()
+        {
+            var reservationDateElmnt = document.getElementById("reservation_date");
+            var reservationTimeSelElmnt = document.getElementById("reservation_time");
+            var date = new Date(reservationDateElmnt.value);
+
+           if (!isWeekend(date))
+           {
+                reservationTimeSelElmnt.innerHTML = '<option value="16:00">16:00</option> <option value="17:00">17:00</option><option value="18:00">18:00</option>';
+           }
+           else
+           {
+                reservationTimeSelElmnt.innerHTML = '<option value="13:00">13:00</option><option value="14:00">14:00</option><option value="15:00">15:00</option><option value="16:00">16:00</option><option value="17:00">17:00</option><option value="18:00">18:00</option>';
+           }
+
+        }
+    </script>
+{% endblock script %}
