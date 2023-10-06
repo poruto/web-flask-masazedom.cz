@@ -3,7 +3,7 @@ from json import JSONDecodeError
 from datetime import datetime
 
 class Reservation:
-    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, timestamp, active):
+    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, timestamp, id, active):
         self.name = name
         self.surname = surname
         self.year = year
@@ -16,6 +16,7 @@ class Reservation:
         self.notes = notes
         self.active = active
         self.timestamp = timestamp
+        self.id = id
     
     def get_data(self):
         return {
@@ -29,17 +30,31 @@ class Reservation:
             "type": self.massage_type,
             "notes": self.notes,
             "timestamp": self.timestamp,
+            "id": self.id,
             "active": self.active
             }
     
     def get_id(self):
-        return str(hash("%s%s%s" % (self.date, self.time, self.email)))
+        return self.id
     
 
 class ReservationManager:
     def __init__(self):
         self.reservations = []
+        self.counter = 0
         self.load()
+    
+    #  Set max counter
+    def set_max_counter(self):
+        self.counter = 0
+
+        for r in self.reservations:
+            if r.id > self.counter:
+                self.counter = r.id
+    
+    def get_new_id(self):
+        self.counter += 1
+        return self.counter
     
     #  Check if time and date is not reserved
     def is_available(self, date, time):
@@ -52,7 +67,7 @@ class ReservationManager:
     #  Create reservation to the system
     def create_reservation(self, name, surname, year, email, phone, date, time, massage_type, notes):
         timestamp = str(datetime.now())
-        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, timestamp, "1")
+        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, timestamp, self.get_new_id(), "1")
         self.reservations.append(r)
 
         # Save data
@@ -60,7 +75,7 @@ class ReservationManager:
     
     def get_reservation_by_id(self, id):
         for r in self.reservations:
-            if r.get_id() == id:
+            if str(r.get_id()) == id:
                 return r
 
         return None
@@ -83,8 +98,10 @@ class ReservationManager:
 
                 for rData in data:
                     r = Reservation(data[rData]["name"], data[rData]["surname"], data[rData]["year"], data[rData]["email"],
-                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["timestamp"], data[rData]["active"])
+                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["timestamp"], data[rData]["id"], data[rData]["active"])
                     self.reservations.append(r)
+                
+                self.set_max_counter()
 
         except FileNotFoundError:
             pass

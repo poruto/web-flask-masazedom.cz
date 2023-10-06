@@ -249,14 +249,14 @@ nav
     padding: 3px;
     text-align: center;
     word-break: break-all;
-    max-width: 200px;
+    max-width: 225px;
 }
 
 .atable_td2
 {
     min-width: 50px;
     padding: 3px;
-    max-width: 200px;
+    max-width: 225px;
     word-break: break-all;
     text-align: center;
     background-color:  rgba(71, 71, 71, 0.13);
