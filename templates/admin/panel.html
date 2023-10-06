@@ -8,7 +8,8 @@
      <h1>Panel Správce</h1>
      <button onclick="logOff()" class="reservation_submit_button" style="float: none; margin-left: 0">Odhlásit se</button>
 
-     <div>Legenda</div>
+     <br>
+     <div>Legenda a filter</div>
      <table>
         <tr>
             <th>
@@ -16,6 +17,9 @@
             </th>
             <th>
                 Význam
+            </th>
+            <th>
+                Filtr
             </th>
         </tr>
 
@@ -26,6 +30,9 @@
             <td>
                 Budoucnost
             </td>
+            <td>
+                <input onclick="onFilterChange()" id="filter_future" type="checkbox" checked>
+            </td>
         </tr>
 
         <tr>
@@ -34,6 +41,9 @@
             </td>
             <td>
                 Minulost
+            </td>
+            <td>
+                <input onclick="onFilterChange()" id="filter_past" type="checkbox" checked>
             </td>
         </tr>
 
@@ -44,6 +54,9 @@
             <td>
                 Dnešek
             </td>
+            <td>
+                <input onclick="onFilterChange()" id="filter_today" type="checkbox" checked>
+            </td>
         </tr>
 
         <tr>
@@ -53,12 +66,15 @@
             <td>
                 Zrušeno
             </td>
+            <td>
+                <input onclick="onFilterChange()" id="filter_cancelled" type="checkbox" checked>
+            </td>
         </tr>
      </table>
 
      <h2>Rezervace</h2>
 
-     <table>
+     <table id="reservations_table">
         <tr>
             <th class="atable_th">
                 Status
@@ -112,21 +128,25 @@
             {% set classtd = "atable_td2" %}
         {% endif %}
 
-        <tr>
+        <tr id="{{r.get_id()}}">
             <td class="{{classtd}}">
-
                 {% if r.active == "1" %}
                     {% if r.date_object > date %}
+                        {% set type = "future" %}
                         <img class="asymbol" src="{{url_for('static', filename='images/future.png')}}">
                     {% elif r.date_object < date %}
+                        {% set type = "past" %}
                         <img class="asymbol" src="{{url_for('static', filename='images/past.png')}}">
                     {% else %}
+                        {% set type = "today" %}
                         <img class="asymbol" src="{{url_for('static', filename='images/today.png')}}">
                     {% endif %}
                 {% else %}
                     <img class="asymbol" src="{{url_for('static', filename='images/cancelled.png')}}">
+                    {% set type = "cancelled" %}
                 {% endif %}
 
+                <div id="type;{{r.get_id()}}" style="display: none">{{type}}</div>
             </td>
             <td class="{{classtd}}">
                 {{r.get_id()}}
@@ -183,6 +203,77 @@
 {% block script %}
     <script>
         const urlSetReservationActiveStatus = "{{url_for('admin_set_reservation_active_status')}}";
+        const reservationsTableElmnt = document.getElementById("reservations_table");
+
+        // Filters
+        const filterFuture = document.getElementById("filter_future");
+        const filterPast = document.getElementById("filter_past");
+        const filterToday = document.getElementById("filter_today");
+        const filterCancelled = document.getElementById("filter_cancelled");
+
+        function onFilterChange()
+        {
+            console.log("Filter changed.");
+
+            // Find all the <tr> elements in the table's <tbody>
+            var rows = reservationsTableElmnt.getElementsByTagName("tr");
+
+            // Loop through each <tr> element
+            for (var i = 0; i < rows.length; i++) {
+                // Access the current row (tr)
+                var row = rows[i];
+                
+                if (row.id != "")
+                {
+                    var type = document.getElementById("type;" + row.id).innerText;
+
+                    if (type == "future")
+                    {
+                        if (filterFuture.checked)
+                        {
+                            row.style.display = "";
+                        }
+                        else
+                        {
+                            row.style.display = "none";
+                        }
+                    }
+                    else if (type == "past")
+                    {
+                        if (filterPast.checked)
+                        {
+                            row.style.display = "";
+                        }
+                        else
+                        {
+                            row.style.display = "none";
+                        }
+                    }
+                    else if (type == "today")
+                    {
+                        if (filterToday.checked)
+                        {
+                            row.style.display = "";
+                        }
+                        else
+                        {
+                            row.style.display = "none";
+                        }
+                    }
+                    else if (type == "cancelled")
+                    {
+                        if (filterCancelled.checked)
+                        {
+                            row.style.display = "";
+                        }
+                        else
+                        {
+                            row.style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
 
         function logOff()
         {
