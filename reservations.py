@@ -3,7 +3,7 @@ from json import JSONDecodeError
 from datetime import datetime
 
 class Reservation:
-    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, active):
+    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, timestamp, active):
         self.name = name
         self.surname = surname
         self.year = year
@@ -15,6 +15,7 @@ class Reservation:
         self.massage_type = massage_type
         self.notes = notes
         self.active = active
+        self.timestamp = timestamp
     
     def get_data(self):
         return {
@@ -27,6 +28,7 @@ class Reservation:
             "time": self.time,
             "type": self.massage_type,
             "notes": self.notes,
+            "timestamp": self.timestamp,
             "active": self.active
             }
     
@@ -49,7 +51,8 @@ class ReservationManager:
     
     #  Create reservation to the system
     def create_reservation(self, name, surname, year, email, phone, date, time, massage_type, notes):
-        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, "1")
+        timestamp = str(datetime.now())
+        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, timestamp, "1")
         self.reservations.append(r)
 
         # Save data
@@ -80,7 +83,7 @@ class ReservationManager:
 
                 for rData in data:
                     r = Reservation(data[rData]["name"], data[rData]["surname"], data[rData]["year"], data[rData]["email"],
-                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["active"])
+                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["timestamp"], data[rData]["active"])
                     self.reservations.append(r)
 
         except FileNotFoundError:

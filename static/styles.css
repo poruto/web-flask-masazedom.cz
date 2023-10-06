@@ -204,6 +204,11 @@ nav
     margin-bottom: 25px;
 }
 
+.price_description
+{
+    font-size: 95%;
+}
+
 .price_logo
 {
     max-width: 75px;
