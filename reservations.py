@@ -1,16 +1,19 @@
 import json
 from json import JSONDecodeError
+from datetime import datetime
 
 class Reservation:
-    def __init__(self, name, surname, year, email, phone, date, time, massage_type, active):
+    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, active):
         self.name = name
         self.surname = surname
         self.year = year
         self.email = email
         self.phone = phone
         self.date = date
+        self.date_object = datetime.strptime(date, '%Y-%m-%d').date()
         self.time = time
         self.massage_type = massage_type
+        self.notes = notes
         self.active = active
     
     def get_data(self):
@@ -23,6 +26,7 @@ class Reservation:
             "date": self.date,
             "time": self.time,
             "type": self.massage_type,
+            "notes": self.notes,
             "active": self.active
             }
     
@@ -44,8 +48,8 @@ class ReservationManager:
         return True
     
     #  Create reservation to the system
-    def create_reservation(self, name, surname, year, email, phone, date, time, massage_type):
-        r = Reservation(name, surname, year, email, phone, date, time, massage_type, "1")
+    def create_reservation(self, name, surname, year, email, phone, date, time, massage_type, notes):
+        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, "1")
         self.reservations.append(r)
 
         # Save data
@@ -76,7 +80,7 @@ class ReservationManager:
 
                 for rData in data:
                     r = Reservation(data[rData]["name"], data[rData]["surname"], data[rData]["year"], data[rData]["email"],
-                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["active"])
+                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["active"])
                     self.reservations.append(r)
 
         except FileNotFoundError:

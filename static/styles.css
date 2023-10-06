@@ -240,11 +240,23 @@ nav
 
 .atable_td1
 {
+    padding: 3px;
     text-align: center;
+    word-break: break-all;
+    max-width: 200px;
 }
 
 .atable_td2
 {
+    padding: 3px;
+    max-width: 200px;
+    word-break: break-all;
     text-align: center;
     background-color:  rgba(71, 71, 71, 0.13);
+}
+
+.asymbol
+{
+    width: 25px;
+    height: 25px;
 }

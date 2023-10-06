@@ -8,10 +8,52 @@
      <h1>Panel Správce</h1>
      <button onclick="logOff()" class="reservation_submit_button" style="float: none; margin-left: 0">Odhlásit se</button>
 
+     <div>Legenda</div>
+     <table>
+        <tr>
+            <th>
+                Symbol
+            </th>
+            <th>
+                Význam
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                <img class="asymbol" src="{{url_for('static', filename='images/future.png')}}">
+            </td>
+            <td>
+                Budoucnost
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <img class="asymbol" src="{{url_for('static', filename='images/past.png')}}">
+            </td>
+            <td>
+                Minulost
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <img class="asymbol" src="{{url_for('static', filename='images/today.png')}}">
+            </td>
+            <td>
+                Dnešek
+            </td>
+        </tr>
+     </table>
+
      <h2>Rezervace</h2>
 
      <table>
         <tr>
+            <th class="atable_th">
+                Status
+            </td>
             <th class="atable_th">
                 ID
             </th>
@@ -39,7 +81,10 @@
             <th class="atable_th">
                 Typ masáže
             </th>
-            <th>
+            <th class="atable_th">
+                Poznámky
+            </th>
+            <th class="atable_th">
                 Aktivní
             </th>
             <th>
@@ -59,6 +104,17 @@
         {% endif %}
 
         <tr>
+            <td class="{{classtd}}">
+
+                {% if r.date_object > date %}
+                    <img class="asymbol" src="{{url_for('static', filename='images/future.png')}}">
+                {% elif r.date_object < date %}
+                    <img class="asymbol" src="{{url_for('static', filename='images/past.png')}}">
+                {% else %}
+                    <img class="asymbol" src="{{url_for('static', filename='images/today.png')}}">
+                {% endif %}
+
+            </td>
             <td class="{{classtd}}">
                 {{r.get_id()}}
             </td>
@@ -85,6 +141,9 @@
             </td>
             <td class="{{classtd}}">
                 {{r.massage_type}}
+            </td>
+            <td class="{{classtd}}">
+                {{r.notes}}
             </td>
             <td class="{{classtd}}">
                 {{r.active}}

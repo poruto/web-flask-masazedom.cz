@@ -3,6 +3,8 @@ from flask_session import Session
 from email_tools import *
 from reservations import *
 
+from datetime import datetime
+
 
 # Settings
 HOST = "0.0.0.0"
@@ -108,7 +110,7 @@ def rezervace_create():
 
     # If everything valid, try to send email
     if created == 1:
-        rm.create_reservation(str(name), str(surname), str(year), str(email), str(phone), str(date), str(time), str(massage_type))
+        rm.create_reservation(str(name), str(surname), str(year), str(email), str(phone), str(date), str(time), str(massage_type), str(notes))
 
         #  Send notification to own email
         create_email = ("Založena rezervace v systému\nJméno: %s "
@@ -146,7 +148,7 @@ def kontakt():
 @app.route('/admin')
 def admin():
     if "mode" in session and session["mode"] == "admin":
-        return render_template("admin/panel.html", rm=rm)
+        return render_template("admin/panel.html", rm=rm, date=datetime.now().date())
 
     return render_template("admin/login.html")
 
