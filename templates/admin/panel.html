@@ -45,6 +45,15 @@
                 Dnešek
             </td>
         </tr>
+
+        <tr>
+            <td>
+                <img class="asymbol" src="{{url_for('static', filename='images/cancelled.png')}}">
+            </td>
+            <td>
+                Zrušeno
+            </td>
+        </tr>
      </table>
 
      <h2>Rezervace</h2>
@@ -106,12 +115,16 @@
         <tr>
             <td class="{{classtd}}">
 
-                {% if r.date_object > date %}
-                    <img class="asymbol" src="{{url_for('static', filename='images/future.png')}}">
-                {% elif r.date_object < date %}
-                    <img class="asymbol" src="{{url_for('static', filename='images/past.png')}}">
+                {% if r.active == "1" %}
+                    {% if r.date_object > date %}
+                        <img class="asymbol" src="{{url_for('static', filename='images/future.png')}}">
+                    {% elif r.date_object < date %}
+                        <img class="asymbol" src="{{url_for('static', filename='images/past.png')}}">
+                    {% else %}
+                        <img class="asymbol" src="{{url_for('static', filename='images/today.png')}}">
+                    {% endif %}
                 {% else %}
-                    <img class="asymbol" src="{{url_for('static', filename='images/today.png')}}">
+                    <img class="asymbol" src="{{url_for('static', filename='images/cancelled.png')}}">
                 {% endif %}
 
             </td>
