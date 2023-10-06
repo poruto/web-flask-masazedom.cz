@@ -145,6 +145,10 @@ def kontakt():
     return render_template("kontakt.html",
                            nav_page="kontakt")
 
+@app.route('/blog')
+def blog():
+    return render_template("blog/blog.html", nav_page="blog")
+
 @app.route('/admin')
 def admin():
     if "mode" in session and session["mode"] == "admin":
