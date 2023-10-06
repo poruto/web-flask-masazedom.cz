@@ -51,6 +51,13 @@ class ReservationManager:
         # Save data
         self.save()
     
+    def get_reservation_by_id(self, id):
+        for r in self.reservations:
+            if r.get_id() == id:
+                return r
+
+        return None
+    
     #  Save reservations
     def save(self):
         data = {}

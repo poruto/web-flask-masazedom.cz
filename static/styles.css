@@ -237,3 +237,14 @@ nav
 {
     text-align: left;
 }
+
+.atable_td1
+{
+    text-align: center;
+}
+
+.atable_td2
+{
+    text-align: center;
+    background-color:  rgba(71, 71, 71, 0.13);
+}

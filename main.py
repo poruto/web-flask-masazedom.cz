@@ -161,6 +161,21 @@ def admin_login():
 
     return render_template("admin/login_result.html", login=False)
 
+@app.route('/admin/reservation/set/status')
+@app.route('/admin/reservation/set/status/<reservation_id>/<status>')
+def admin_set_reservation_active_status(reservation_id=None, status=None):
+    if (reservation_id == None or status == None):
+        return "n"
+
+    r = rm.get_reservation_by_id(reservation_id)
+
+    if status in ["1", "0"] and r != None:
+        r.active = status
+        rm.save()
+        return "y"
+        
+    return "n"
+
 @app.route('/session/reset')
 def session_reset():
     session["mode"] = None

@@ -39,37 +39,68 @@
             <th class="atable_th">
                 Typ masáže
             </th>
+            <th>
+                Aktivní
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
         </tr>
 
-     
      {% for r in rm.reservations %}
+
+        {% if loop.index % 2 == 0 %}
+            {% set classtd = "atable_td1" %}
+        {% else %}
+            {% set classtd = "atable_td2" %}
+        {% endif %}
+
         <tr>
-            <td>
+            <td class="{{classtd}}">
                 {{r.get_id()}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.name}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.surname}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.year}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.email}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.phone}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.date}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.time}}
             </td>
-            <td>
+            <td class="{{classtd}}">
                 {{r.massage_type}}
+            </td>
+            <td class="{{classtd}}">
+                {{r.active}}
+            </td>
+            
+            <!-- Check if reservation is active or not, then add valid buttons -->
+            <td class="{{classtd}}">
+                {% if r.active == "1" %}
+                    <button onclick="setReservationActiveStatus(this, '0')" id="{{r.get_id()}}" style="font-size: 100%; margin: auto; width: 100%" class="reservation_submit_button">
+                        Zrušit
+                    </button>
+                {% else %}
+                    <button onclick="setReservationActiveStatus(this, '1')" id="{{r.get_id()}}" style="font-size: 100%; margin: auto; width: 100%" class="reservation_submit_button">
+                        Obnovit
+                    </button>
+                {% endif %}
             </td>
         </tr>
      {% endfor %}
@@ -79,9 +110,36 @@
 
 {% block script %}
     <script>
+        const urlSetReservationActiveStatus = "{{url_for('admin_set_reservation_active_status')}}";
+
         function logOff()
         {
             window.location.replace("{{url_for('session_reset')}}");   
+        }
+
+        function setReservationActiveStatus(elmnt, active)
+        {
+            var reservationId = elmnt.id;
+            var url = urlSetReservationActiveStatus + "/" + reservationId + "/" + active;
+
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    if (data == "y")
+                    {
+                        // Reload page
+                        window.location.replace("{{url_for('admin')}}");   
+                    }
+                    else if (data == "n")
+                    {
+                        alert("Něco se nepovedlo!");
+                    }
+                },
+                error: function(jqXHR,error, errorThrown) {  
+                    // TODO IF ERROR
+                },
+            });
+            
         }
     </script>
 {% endblock script %}
