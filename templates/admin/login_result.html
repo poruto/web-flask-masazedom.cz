@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Home | {{project_name}}
+{% endblock title  %}
+
+{% block content %}
+     <h1>Panel Správce</h1>
+     {% if login == True %}
+        <div> Úspěšné přihlášení. Přesměrovávám... </div>
+     {% else %}
+        <div> Špatné heslo nebo uživatel, zkuste to prosím znovu. </div>
+     {% endif %}
+{% endblock content %}
+
+{% if login == True %}
+    {% block script %}
+        <script>
+            async function redirectToLogin()
+            {
+                await delay(2000);
+                window.location.replace("{{url_for('admin')}}");   
+            }
+
+            redirectToLogin();
+        </script>
+    {% endblock script %}
+{% endif %}

@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Home | {{project_name}}
+{% endblock title  %}
+
+{% block content %}
+     <h1>Panel Správce</h1>
+     <button onclick="logOff()" class="reservation_submit_button" style="float: none; margin-left: 0">Odhlásit se</button>
+
+     <h2>Rezervace</h2>
+
+     <table>
+        <tr>
+            <th class="atable_th">
+                ID
+            </th>
+            <th class="atable_th">
+                Jméno
+            </th>
+            <th class="atable_th">
+                Přijmení
+            </th>
+            <th class="atable_th">
+                Rok narození
+            </th>
+            <th class="atable_th">
+                Email
+            </th>
+            <th class="atable_th">
+                Telefon
+            </th>
+            <th class="atable_th">
+                Datum
+            </th>
+            <th class="atable_th">
+                Čas
+            </th>
+            <th class="atable_th">
+                Typ masáže
+            </th>
+        </tr>
+
+     
+     {% for r in rm.reservations %}
+        <tr>
+            <td>
+                {{r.get_id()}}
+            </td>
+            <td>
+                {{r.name}}
+            </td>
+            <td>
+                {{r.surname}}
+            </td>
+            <td>
+                {{r.year}}
+            </td>
+            <td>
+                {{r.email}}
+            </td>
+            <td>
+                {{r.phone}}
+            </td>
+            <td>
+                {{r.date}}
+            </td>
+            <td>
+                {{r.time}}
+            </td>
+            <td>
+                {{r.massage_type}}
+            </td>
+        </tr>
+     {% endfor %}
+
+    </table>
+{% endblock content %}
+
+{% block script %}
+    <script>
+        function logOff()
+        {
+            window.location.replace("{{url_for('session_reset')}}");   
+        }
+    </script>
+{% endblock script %}

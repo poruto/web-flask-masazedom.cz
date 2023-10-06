@@ -145,10 +145,27 @@ def kontakt():
 
 @app.route('/admin')
 def admin():
-    return render_template("admin.html")
+    if "mode" in session and session["mode"] == "admin":
+        return render_template("admin/panel.html", rm=rm)
 
+    return render_template("admin/login.html")
 
+@app.route('/admin/login', methods=(["POST"]))
+def admin_login():
+    username = request.form["username"]
+    password = request.form["password"]
 
+    if username == config.settings["webuser"] and password == config.settings["webpassword"]:
+        session["mode"] = "admin"
+        return render_template("admin/login_result.html", login=True)
+
+    return render_template("admin/login_result.html", login=False)
+
+@app.route('/session/reset')
+def session_reset():
+    session["mode"] = None
+    return "Session has been reset."
+    
 if __name__ == '__main__':
     rm = ReservationManager()
     app.run(host=HOST, port=PORT, debug=True)
