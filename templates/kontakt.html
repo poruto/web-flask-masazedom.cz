@@ -5,5 +5,30 @@
 {% endblock title  %}
 
 {% block content %}
-     <h1>Kontakt</h1>
+     <p class="paragraph_1">
+        Ráda Vám na Váš e-mail rychle a pečlivě odpovím, abych vám co nejvíce pomohla. Ale nebojte se, pokud preferujete osobní hovor, můžete i zavolat! :)
+     </p>
+
+     <p class="paragraph_1">
+        <strong>Pokud si chcete objednat balíček masáží a nebo darkový poukaz, prosím napište mi email.</strong>
+     </p>
+
+     <table>
+        <tr>
+            <th class="contact_td">
+                <img class="contact_piktogram" src="{{url_for('static', filename='images/email.png')}}"> 
+            </th>
+            <td class="contact_td">
+                <a href="mailto:masazedomukm@gmail.com">masazedomukm@gmail.com</a>
+            </td>
+        </tr>
+        <tr>
+            <th class="contact_td">
+                <img class="contact_piktogram" src="{{url_for('static', filename='images/phone.png')}}"> 
+            </th>
+            <td class="contact_td">
+                +420 607 008 505
+            </td>
+        </tr>
+     </table>
 {% endblock content %}
