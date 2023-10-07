@@ -67,7 +67,6 @@
 
 .reservation_submit_button
 {
-    cursor: pointer;
     border: none;
     background-color: var(--light_wood_color);
     padding: 10px;
