@@ -3,7 +3,7 @@ from json import JSONDecodeError
 from datetime import datetime
 
 class Reservation:
-    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, timestamp, id, active):
+    def __init__(self, name, surname, year, email, phone, date, time, massage_type, notes, timestamp, id, place, active):
         self.name = name
         self.surname = surname
         self.year = year
@@ -17,6 +17,7 @@ class Reservation:
         self.active = active
         self.timestamp = timestamp
         self.id = id
+        self.place = place
     
     def get_data(self):
         return {
@@ -31,6 +32,7 @@ class Reservation:
             "notes": self.notes,
             "timestamp": self.timestamp,
             "id": self.id,
+            "place": self.place,
             "active": self.active
             }
     
@@ -65,9 +67,9 @@ class ReservationManager:
         return True
     
     #  Create reservation to the system
-    def create_reservation(self, name, surname, year, email, phone, date, time, massage_type, notes):
+    def create_reservation(self, name, surname, year, email, phone, date, time, massage_type, notes, place):
         timestamp = str(datetime.now())
-        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, timestamp, self.get_new_id(), "1")
+        r = Reservation(name, surname, year, email, phone, date, time, massage_type, notes, timestamp, self.get_new_id(), place, "1")
         self.reservations.append(r)
 
         # Save data
@@ -98,7 +100,7 @@ class ReservationManager:
 
                 for rData in data:
                     r = Reservation(data[rData]["name"], data[rData]["surname"], data[rData]["year"], data[rData]["email"],
-                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["timestamp"], data[rData]["id"], data[rData]["active"])
+                                    data[rData]["phone"], data[rData]["date"], data[rData]["time"], data[rData]["type"], data[rData]["notes"], data[rData]["timestamp"], data[rData]["id"], data[rData]["place"], data[rData]["active"])
                     self.reservations.append(r)
                 
                 self.set_max_counter()

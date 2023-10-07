@@ -63,6 +63,7 @@ def rezervace_create():
     date = request.form["reservation_date"]
     massage_type = request.form["reservation_type"]
     notes = request.form["reservation_notes"]
+    place = request.form["reservation_place"]
 
     time = ""
 
@@ -78,6 +79,9 @@ def rezervace_create():
     print("Time", time)
 
     errmsg = ""
+
+    if len(place) == 0:
+        errmsg += "Nevyplnili jste Bydliště. "
 
     if len(name) == 0:
         errmsg += "Nevyplnili jste Jméno. "
@@ -110,7 +114,7 @@ def rezervace_create():
 
     # If everything valid, try to send email
     if created == 1:
-        rm.create_reservation(str(name), str(surname), str(year), str(email), str(phone), str(date), str(time), str(massage_type), str(notes))
+        rm.create_reservation(str(name), str(surname), str(year), str(email), str(phone), str(date), str(time), str(massage_type), str(notes), str(place))
 
         #  Send notification to own email
         create_email = ("Založena rezervace v systému\nJméno: %s "

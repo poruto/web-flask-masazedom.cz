@@ -14,20 +14,64 @@
             Rezervace
         </div>
         <form id="reservation_form" action="{{url_for('rezervace_create')}}" method="post">
-            <label class="reservation_label" for="reservation_name">Jméno</label>
-            <input style="width: 25%;" id="reservation_name" name="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
-            <label class="reservation_label" for="reservation_surname">Přijmení</label>
-            <input style="width: 25%;" id="reservation_surname" name="reservation_surname" type="text" class="reservation_input_text" placeholder="Přijmení">
-            <br>
-            <label class="reservation_label" for="reservation_year">Rok narození</label>
-            <input style="width: 60px;" id="reservation_year" name="reservation_year" type="number" min="1900" max="2100" class="reservation_input_text" placeholder="2000" value="2000">
-            <br>
-            <label class="reservation_label" for="reservation_email">E-mail</label>
-            <input style="max-width: 200px; width: 200px;" id="reservation_email" name="reservation_email" type="text" class="reservation_input_text" placeholder="ukazkovy@email.cz">
-            <br>
-            <label class="reservation_label" for="reservation_phone">Telefonní číslo</label>
-            <input style="max-width: 100px; width: 100px;" id="reservation_phone" name="reservation_phone" type="text" class="reservation_input_text" placeholder="000 000 000">
-            <br>
+
+             <table style="width: 100%">
+
+                <tr>
+                    <td>
+                        E-mail
+                    </td>
+                    <td>
+                        <input style="width: 100%;" id="reservation_email" name="reservation_email" type="text" class="reservation_input_text" placeholder="Ukazkovy@email.cz">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Bydliště
+                    </td>
+                    <td>
+                        <input style="width: 100%;" id="reservation_place" name="reservation_place" type="text" class="reservation_input_text" placeholder="Kroměříž, Ulice Hlavní 123, 100 00">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Jméno
+                    </td>
+                    <td>
+                        <input style="width: 50%;" id="reservation_name" name="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Přijmení
+                    </td>
+                    <td>
+                        <input style="width: 50%;" id="reservation_surname" name="reservation_surname" type="text" class="reservation_input_text" placeholder="Přijmení">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Telefonní číslo
+                    </td>
+                    <td>
+                        <input style="max-width: 100px; width: 100px;" id="reservation_phone" name="reservation_phone" type="text" class="reservation_input_text" placeholder="000 000 000">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Rok narození
+                    </td>
+                    <td>
+                        <input style="width: 60px;" id="reservation_year" name="reservation_year" type="number" min="1900" max="2100" class="reservation_input_text" placeholder="2000" value="2000">
+                    </td>
+                </tr>
+             </table>
+
             <br>
 
             <p>
