@@ -561,7 +561,7 @@ body
     {
         box-sizing: border-box;
         padding: 0px;
-        width: calc(100% - 20px);
+        width: calc(100% - 30px);
     }
 
     body
