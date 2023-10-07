@@ -6,33 +6,7 @@
 
 {% block content %}
     <p class="paragraph_1">
-        Vítám Vás na naší stránce rezervace termínu pro naše relaxační masáže. Zarezervovat si svůj čas na chvíli odpočinku je snadné a rychlé. Stačí následovat několik jednoduchých kroků:
-    </p>
-
-    <ol>
-        <li>
-            <strong>Vyberte Typ Masáže:</strong> Nejprve si vyberte typ masáže, který byste chtěli zažít. Nabízím širokou škálu masáží, které Vám pomohou relaxovat a odstranit stres.
-        </li>
-        <li>
-            <strong>Vyberte Datum a Čas:</strong> Zvolte si datum a čas, který Vám nejlépe vyhovuje. Jsem tu pro Vás, abych se postarala o Vaše pohodlí.
-        </li>
-        <li>
-            <strong>Vyplňte Kontaktní Informace:</strong> Prosím, vyplňte krátký formulář s Vašimi kontaktními údaji, abych Vás mohla kontaktovat ohledně Vaší rezervace.
-        </li>
-        <li>
-            <strong>Potvrďte Rezervaci:</strong> Klikněte na tlačítko "Potvrdit rezervaci" a Vaše žádost o rezervaci bude odeslána na zpracování.
-        </li>
-        <li>
-            <strong>Potvrzení na Email:</strong> Po zpracování Vaší rezervace Vám zašleme potvrzovací email s detaily Vašeho termínu masáže. Ujistěte se, že Váš email je správně zadaný.
-        </li>
-    </ol>
-
-    <p class="paragraph_1">
-        Pokud byste raději komunikovali se mnou přímo nebo měli nějaké speciální požadavky, neváhejte mě kontaktovat. Klikněte na sekci "Kontakt" na mé stránce, kde najdete moje telefonní číslo a emailovou adresu. Jsem tu pro vás a ráda Vám poskytnu veškeré informace, které potřebujete.
-    </p>
-
-    <p>
-        Děkuji za Váš zájem o mé masáže a těším se na to, že Vás brzy uvidím!
+        Zde si můžete zarezervovat Vám nejvíce vyhovující termín. Vše probíhá velmi snadně a rychle. Pro rezervaci vyplňte následující formulář:
     </p>
 
      <div class="reservation_box">
@@ -41,9 +15,9 @@
         </div>
         <form action="{{url_for('rezervace_create')}}" method="post">
             <label class="reservation_label" for="reservation_name">Jméno</label>
-            <input style="max-width: 75px; width: 75px;" id="reservation_name" name="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
+            <input style="width: 25%;" id="reservation_name" name="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
             <label class="reservation_label" for="reservation_surname">Přijmení</label>
-            <input style="max-width: 75px; width: 75px;" id="reservation_surname" name="reservation_surname" type="text" class="reservation_input_text" placeholder="Přijmení">
+            <input style="width: 25%;" id="reservation_surname" name="reservation_surname" type="text" class="reservation_input_text" placeholder="Přijmení">
             <br>
             <label class="reservation_label" for="reservation_year">Rok narození</label>
             <input style="width: 60px;" id="reservation_year" name="reservation_year" type="number" min="1900" max="2100" class="reservation_input_text" placeholder="2000" value="2000">
@@ -98,6 +72,24 @@
             <input type="submit" class="reservation_submit_button" value="Potvrdit">
         </form>
      </div>
+
+
+     
+    <p class="paragraph_1">
+        Takto zarezervovaný termín je závazný poté, co Vás prostřednictvím e-mailu kontaktuji a rezervaci Vám potvrdím. (Nepočítáme automatickou odpověď.) Pokud jste tedy zarezervovali termín omylem, prosím, ozvěte se mi a rezervaci zrušte.
+    </p>
+
+    <p class="paragraph_1">
+        Telefonickou i elektronickou rezervaci je možno bezplatně zrušit do 23:59 předchozího dne. V případě nezrušení rezervace bez závažného důvodu si účtuji 50 % z původní ceny masáže. 
+    </p>
+
+    <p class="paragraph_1">
+        <strong>Pokud byste raději komunikovali přímo se mnou nebo měli více dotazů či požavků, budu ráda, když mne kontaktujete. V sekci „Kontakt“ najdete mé telefonní číslo a e-mailovou adresu.</strong>
+    </p>
+
+    <p class="paragraph_1">
+        Děkuji za Váš zájem o mé masáže a těším se na to, že Vás brzy uvidím!
+    </p>
 {% endblock content %}
 
 {% block script %}

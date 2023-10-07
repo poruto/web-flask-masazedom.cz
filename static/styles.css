@@ -138,6 +138,13 @@ body
     font-size: 125%;
 }
 
+.paragraph_2
+{
+    width: 100%;
+    font-size: 125%;
+    margin: 0 auto;
+}
+
 nav
 {
     text-align: center;
@@ -180,8 +187,8 @@ nav
     background-color: var(--light_wood_color);
     padding: 50px;
     border-radius: 50px;
-    width: 400px;
-    min-width: 400px;
+    width: 450px;
+    min-width: 450px;
     display: inline-block;
     text-align: left;
     margin-left: 20px;
@@ -194,12 +201,12 @@ nav
 .price:hover
 {
     filter: brightness(1.25);
-    width: 550px;
+    width: 475px;
 }
 
 .price_title
 {
-    font-size: 250%;
+    font-size: 225%;
     text-align: center;
     margin-bottom: 25px;
 }
@@ -232,7 +239,7 @@ nav
 
 .price_money
 {
-    font-size: 150%;
+    font-size: 175%;
     color:  rgb(71, 71, 71);
     filter: brightness(1.5);
     text-align: right;

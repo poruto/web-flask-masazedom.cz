@@ -6,10 +6,44 @@
 
 {% block content %}
      <div class="price_box">
+
+        <h1>
+            Masáže
+        </h1>
+
+        <p class="paragraph_2">
+            Při rezervaci máte možnost navolit si masáž přesně podle Vašich představ. Při zakládání rezervace vyberte typ. Pokud máte speciální požadavky do kolonky „Poznámky“ mi poté prosím uveďte, o kterou masáž byste měli zájem. Můžete vybírat z níže uvedených:
+            Záda, nohy, nohy z přední strany, ruce, břicho, hrudník, hýždě, obličej, hlava.            
+        </p>
+
        <div class="price">
             <div class="price_title">
-                Základní masáž
+                Základní masáž I
+            </div> 
+            <div class="price_time">
+                60 Minut
             </div>
+
+            <img class="price_logo" src="{{url_for('static', filename='images/bodypart_back.png')}}">
+            <img class="price_logo" src="{{url_for('static', filename='images/bodypart_neck.png')}}">
+            
+            <div class="price_body_parts">
+                Záda + Šíje
+            </div>
+
+            <div class="price_description">
+                Základní masáž dopomáhá uvolnění zatuhlých a namáhaných svalů v oblasti zad, krku a šíjí.
+            </div>
+
+            <div class="price_money">
+                720 KČ
+            </div>
+       </div>
+
+       <div class="price">
+            <div class="price_title">
+                Základní masáž II
+            </div> 
             <div class="price_time">
                 60 Minut
             </div>
@@ -22,56 +56,161 @@
             </div>
 
             <div class="price_description">
-                Popis
+                Tato masáž přináší dokonalý odpočinek. Uvolňuje spazmy i fascie, dochází k redukci celulitidy a napomáhá celkové duševní pohodě.
             </div>
 
             <div class="price_money">
                 720 KČ
             </div>
-       </div>
+        </div>
+
+
        <div class="price">
         <div class="price_title">
-            Celotělová péče
+            Celotělová masáž
         </div>
         <div class="price_time">
-            60 Minut
+            90 Minut
         </div>
 
         <img class="price_logo" src="{{url_for('static', filename='images/bodypart_body.png')}}">
 
         <div class="price_body_parts">
-            Celé tělo
+            Celé tělo (Záda + Nohy + Šíje + Ruce)
         </div>
 
         <div class="price_description">
-            Popis
+            Celotělovou masáží se prokrvuje celé tělo, zvyšuje se se kapacita plic, detoxikuje organismus a omlazuje kůže.
         </div>
 
         <div class="price_money">
-            720 KČ
+            1020 KČ
         </div>
         </div>
+
         <div class="price">
             <div class="price_title">
-                Masáž od hlavy k patě
+                Masáž s více soukromím
             </div>
             <div class="price_time">
-                90 Minut
+                60 Minut
             </div>
 
-            <img class="price_logo" src="{{url_for('static', filename='images/bodypart_body.png')}}">
+            <img class="price_logo" src="{{url_for('static', filename='images/bodypart_back.png')}}">
+            <img class="price_logo" src="{{url_for('static', filename='images/bodypart_feet.png')}}">
 
             <div class="price_body_parts">
-                Celé tělo
+                Záda + Nohy
             </div>
 
             <div class="price_description">
-                Popis
+                Cílem této masáže je co nejméně narušit intimitu klienta, kdy si po celou dobu masáže nechává spodní prádlo. Vhodné například pro lidi, kteří z první návštěvy mají strach nebo se cítí nejistí z jakéhokoliv důvodu.
             </div>
 
             <div class="price_money">
-                1120 KČ
+                720 KČ
             </div>
         </div>
+
+        <h1>
+            Balíčky
+        </h1>
+
+        <p class="paragraph_2">
+            Celou částku u balíčků je možno zaplatit hotově na místě při první z masáží nebo převodem na účet. K tomuto účelu mne prosím kontaktujte prostřednictvím e-mailu.
+        </p>
+
+        <div class="price">
+            <div class="price_title">
+                Balíček masáží I
+            </div>
+            <div class="price_time">
+                3 masáže po 60 minutách
+            </div>
+
+            <img class="price_logo" src="{{url_for('static', filename='images/package.png')}}">
+
+            <div class="price_description">
+                Je možno si vybrat z nabídky druh masáže.    
+             </div>
+ 
+             <div class="price_description">
+                 Jedna pouze za 660 KČ.
+             </div>
+
+            <div class="price_money">
+                1980 KČ
+            </div>
+        </div>
+
+        <div class="price">
+            <div class="price_title">
+                Balíček masáží II
+            </div>
+            <div class="price_time">
+                3 masáže po 90 minutách
+            </div>
+
+            <img class="price_logo" src="{{url_for('static', filename='images/package.png')}}"> 
+
+            <div class="price_description">
+               Je možno si vybrat z nabídky druh masáže.    
+            </div>
+
+            <div class="price_description">
+                Jedna pouze za 920 KČ.
+            </div>
+
+            <div class="price_money">
+                2760 KČ
+            </div>
+        </div>
+
+        <h1>
+            Dárkové poukazy
+        </h1>
+
+        <p class="paragraph_2">
+            Dárkové poukazy je možno zakoupit převodem na účet. Pro tento účel mne posím kontaktuje prostřednictvím e-mailu. Po uhrazení částky Vám v příloze e-mailu zašlu dárkový poukaz k vytisknutí.        
+        </p>
+
+        <div class="price">
+            <div class="price_title">
+                Darkový poukaz I
+            </div>
+            <div class="price_time">
+                60 minut
+            </div>
+
+            <img class="price_logo" src="{{url_for('static', filename='images/gift.png')}}"> 
+
+            <div class="price_description">
+                1 Masáž 
+            </div>
+
+            <div class="price_money">
+                720 KČ
+            </div>
+        </div>
+
+        <div class="price">
+            <div class="price_title">
+                Darkový poukaz II
+            </div>
+            <div class="price_time">
+                90 minut
+            </div>
+
+            <img class="price_logo" src="{{url_for('static', filename='images/gift.png')}}"> 
+
+            <div class="price_description">
+                1 Masáž 
+            </div>
+
+            <div class="price_money">
+                1020 KČ
+            </div>
+        </div>
+
      </div>
 {% endblock content %}
