@@ -25,6 +25,7 @@
             <div class="page_title_2">
                 v srdci Kroměříže a okolí
             </div>
+            <img id="flower_image" src="{{url_for('static', filename='images/flower.png')}}">
         </div>
         <header>
             {% include 'nav.html' %}
@@ -47,7 +48,7 @@
 
     <script>
           document.getElementById("content_box").addEventListener("click", hideMobileMenu);
-          $("#page_title_separator").animate({ width: '65%' }, {duration: 1500, queue: false});
+          $("#page_title_separator").animate({ width: '60%' }, {duration: 1500, queue: false});
           $("#logo_part_1").animate({ opacity:'0.03' }, {duration: 1500, queue: false});
     </script>
 

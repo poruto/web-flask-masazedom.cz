@@ -131,12 +131,14 @@
 
 .page_title_1
 {
+    color: rgb(222, 184, 135, 1);
    font-size: 30px;
    margin-left: 10px;
 }
 
 .page_title_2
 {
+    color: rgb(222, 184, 135, 1);
    font-size: 16px;
 }
 
@@ -433,6 +435,16 @@ body
     display: block;
 }
 
+#flower_image
+{
+    opacity: 0.75;
+    width: 60px;
+    z-index: -1;
+    position: absolute;
+    top: 40px;
+    left: 180px;
+}
+
 
 /* Phone resolution */
 @media only screen and (max-width: 1100px) 
@@ -549,6 +561,11 @@ body
         box-sizing: border-box;
         padding: 0px;
         width: calc(100% - 20px);
+    }
+
+    body
+    {
+        overflow-x: hidden;
     }
 
 }
