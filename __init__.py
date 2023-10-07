@@ -11,6 +11,9 @@ from datetime import datetime
 HOST = "127.0.0.1"
 PORT = 8000
 
+#  Reservation Manager
+rm = ReservationManager()
+
 # Init
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = "static/uploads"
@@ -57,6 +60,7 @@ def is_reservation_available(date=None, time=None):
 
 @app.route('/rezervace/create', methods=(['POST']))
 def rezervace_create():
+    global rm
     created = 1
 
     name = request.form["reservation_name"]
@@ -164,6 +168,7 @@ def blog():
 
 @app.route('/admin')
 def admin():
+    global rm
     if "mode" in session and session["mode"] == "admin":
         return render_template("admin/panel.html", rm=rm, date=datetime.now().date())
 
@@ -183,6 +188,7 @@ def admin_login():
 @app.route('/admin/reservation/set/status')
 @app.route('/admin/reservation/set/status/<reservation_id>/<status>')
 def admin_set_reservation_active_status(reservation_id=None, status=None):
+    global rm
     if (reservation_id == None or status == None):
         return "n"
 
@@ -201,5 +207,4 @@ def session_reset():
     return "Session has been reset."
     
 if __name__ == '__main__':
-    rm = ReservationManager()
     app.run()

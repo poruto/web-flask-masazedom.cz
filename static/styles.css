@@ -378,6 +378,7 @@ nav
 
 .main_2
 {
+    margin-left: 25px;
     border-radius: 100px;
     opacity: 0.95;
     width: 300px;
@@ -523,6 +524,11 @@ body
         margin-right: auto;
         margin-left: auto;
         width: 60%;
+    }
+
+    .paragraph_2
+    {
+        padding: 10px;
     }
 
     .paragraph_1
