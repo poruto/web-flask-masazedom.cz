@@ -51,7 +51,7 @@ def is_reservation_available(date=None, time=None):
     else:
         return "n"
 
-@app.route('/rezervace_create/', methods=(['POST']))
+@app.route('/rezervace/create', methods=(['POST']))
 def rezervace_create():
     created = 1
 
@@ -139,6 +139,10 @@ def rezervace_create():
                            nav_page="reservation",
                            created=created,
                            errmsg=errmsg)
+
+@app.route("/rezervace/podminky")
+def rezervace_podminky():
+    return render_template("terms.html")
 
 @app.route('/kontakt')
 def kontakt():

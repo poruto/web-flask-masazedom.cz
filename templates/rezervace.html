@@ -13,7 +13,7 @@
         <div class="reservation_title">
             Rezervace
         </div>
-        <form action="{{url_for('rezervace_create')}}" method="post">
+        <form id="reservation_form" action="{{url_for('rezervace_create')}}" method="post">
             <label class="reservation_label" for="reservation_name">Jméno</label>
             <input style="width: 25%;" id="reservation_name" name="reservation_name" type="text" class="reservation_input_text" placeholder="Jméno">
             <label class="reservation_label" for="reservation_surname">Přijmení</label>
@@ -67,9 +67,13 @@
             <label class="reservation_label" for="reservation_notes">Prostor pro Vaše poznámky</label>
             <br>
             <textarea name="reservation_notes" class="reservation_notes"></textarea>
+            <br>
+
+            <input type="checkbox" id="reservation_terms_checkbox" class="reservation_terms_checkbox">
+            <label class="reservation_label" for="reservation_terms_checkbox">Souhlasím se <a class="reservation_terms_a" href="{{url_for('rezervace_podminky')}}" target="_blank">zpracováním osobních údajů a podmínkami rezervace</a>.</label>
 
             <br>
-            <input type="submit" class="reservation_submit_button" value="Potvrdit">
+            <input onclick="submitForm()" type="button" class="reservation_submit_button" value="Potvrdit">
         </form>
      </div>
 
@@ -98,6 +102,9 @@
         const reservationTimeSelElmnt = document.getElementById("reservation_time");
         const reservationAvailableElmnt = document.getElementById("available");
 
+        const termsCheckBox = document.getElementById("reservation_terms_checkbox");
+        const reservationForm = document.getElementById("reservation_form");
+
         // Min date select
         reservationDateElmnt.min = new Date().toISOString().split('T')[0];
 
@@ -105,6 +112,18 @@
 
         function isWeekend(date = new Date()) {
         return date.getDay() === 6 || date.getDay() === 0;
+        }
+
+        function submitForm()
+        {
+            if (termsCheckBox.checked)
+            {
+                reservationForm.submit();
+            }
+            else
+            {
+                alert("Před potvrzením musíte souhlasit se zpracováním osobních údajů a podmínkami rezervace!");
+            }
         }
 
         function isReservationAvailable()

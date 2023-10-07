@@ -95,6 +95,23 @@
     font-size: 125%;
 }
 
+.reservation_terms_checkbox
+{
+    transform: scale(1.5);
+}
+
+.reservation_terms_a
+{
+    transition: color 1.0s ease-out;
+}
+
+.reservation_terms_a:hover
+{
+    color: rgb(151, 151, 151);
+    cursor: pointer;
+}
+
+
 body
 {
     
