@@ -17,7 +17,7 @@
         {% endblock head %}
     </head>
 
-    <body>
+    <body id="body">
         <div class="page_title_box">
             <div class="page_title_1">
                 Masáže domů
@@ -46,7 +46,8 @@
     </body>
 
     <script>
-          $("#page_title_separator").animate({ width: '50%' }, {duration: 1500, queue: false});
+          document.getElementById("content_box").addEventListener("click", hideMobileMenu);
+          $("#page_title_separator").animate({ width: '65%' }, {duration: 1500, queue: false});
           $("#logo_part_1").animate({ opacity:'0.03' }, {duration: 1500, queue: false});
     </script>
 

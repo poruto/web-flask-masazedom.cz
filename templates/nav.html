@@ -1,4 +1,4 @@
-<nav>
+<nav class="navigace_pc">
     <div class="nav_box">
         <a id="home" class="nav_a" href=" {{ url_for('index') }}">Domů</a>
         <a id="reservation" class="nav_a" href=" {{ url_for('rezervace') }}">Rezervace</a>
@@ -6,9 +6,48 @@
         <a id="kontakt" class="nav_a" href=" {{ url_for('kontakt') }}">Kontakt</a>
         <a id="blog" class="nav_a" href=" {{ url_for('blog') }}">Blog</a>
     </div>
- </nav>
+</nav>
+
+<nav class="navigace_mobile">
+        <button onclick="showMobileMenu()" class="reservation_submit_button text_margin_right" id="nav_mobile_button">|||</button>
+        <div id="nav_mobile_content" class="dropdown-content">
+            <a id="home2" class="dropdown_nav" href=" {{ url_for('index') }}">DOMŮ</a>
+            <a id="reservation2" class="dropdown_nav" href=" {{ url_for('rezervace') }}">REZERVACE</a>
+            <a id="cenik2" class="dropdown_nav" href=" {{ url_for('cenik') }}">CENÍK</a>
+            <a id="kontakt2" class="dropdown_nav" href=" {{ url_for('kontakt') }}">KONTAKT</a>
+            <a id="blog2" class="dropdown_nav" href=" {{ url_for('blog') }}">BLOG</a>
+        </div>
+</nav>
 
  <script>
+    var showMobileContent = false;
+    const mobileNavElmnt = document.getElementById("nav_mobile_content");
+
+    function hideMobileMenu()
+    {
+        if (showMobileContent)
+        {
+            showMobileContent = false;
+            mobileNavElmnt.style.display = "none";
+        }
+    }
+
+    function showMobileMenu()
+    {
+        if (!showMobileContent)
+        {
+            mobileNavElmnt.style.display = "block";
+            showMobileContent = true;
+        }
+        else
+        {
+            hideMobileMenu();
+        }
+    }
+
     document.getElementById("{{nav_page}}").style.color = "rgb(97, 94, 77, 1)";
     document.getElementById("{{nav_page}}").style.backgroundColor = "rgb(199, 197, 188, 0.44)"; 
+
+    document.getElementById("{{nav_page}}2").style.color = "rgb(97, 94, 77, 1)";
+    document.getElementById("{{nav_page}}2").style.backgroundColor = "rgb(199, 197, 188, 0.44)"; 
  </script>

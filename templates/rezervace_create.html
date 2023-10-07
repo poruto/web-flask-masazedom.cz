@@ -6,33 +6,33 @@
 
 {% block content %}
 
-    <div class="reservation_title">
+    <div class="reservation_title text_margin_left">
         Rezervace
     </div>
 
     {% if created == 0 %}
-        <p>
+        <p class="text_margin_left">
             Žádost nebyla poslána ke zpracování.
         </p>
 
-        <p>
+        <p class="text_margin_left">
             Nastala nějaká technická nebo provozní chyba.
             Prosíme, ověřte, zda jste správně vyplnili všechny požadované údaje (všechny)
             a zkuste provést rezervaci znovu.
         </p>
 
-        <p style="margin-bottom: 0;"><b>Následující údaje byly vyplněny špatně:</b></p>
+        <p class="text_margin_left" style="margin-bottom: 0;"><b>Následující údaje byly vyplněny špatně:</b></p>
         
-        <p style="margin-top: 5px">
+        <p class="text_margin_left" style="margin-top: 5px">
             {{errmsg}}
         </p>
 
     {% elif created == 1 %}
-        <p>
+        <p class="text_margin_left">
             Žádost byla úspěšně odeslána ke zpracování. Jakmile to bude možné, ozvu se Vám.
         </p>
 
-        <p>
+        <p class="text_margin_left">
             S pozdravem Veronika
         </p>
     {% endif %}

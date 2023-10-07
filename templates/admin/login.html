@@ -5,8 +5,8 @@
 {% endblock title  %}
 
 {% block content %}
-     <h1>Panel Správce</h1>
-     <div> Pro přístup se potřebuješ přihlásit! </div>
+     <h1 class="text_margin_left">Panel Správce</h1>
+     <div class="text_margin_left"> Pro přístup se potřebuješ přihlásit! </div>
 
      <form action="{{url_for('admin_login')}}" method="post">
         <input type="text" class="reservation_input_text" placeholder="Username" name="username">
