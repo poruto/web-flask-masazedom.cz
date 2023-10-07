@@ -217,6 +217,8 @@
         const urlSetReservationActiveStatus = "{{url_for('admin_set_reservation_active_status')}}";
         const reservationsTableElmnt = document.getElementById("reservations_table");
 
+        document.getElementById("content_box").style.overflowX = "scroll";
+
         // Filters
         const filterFuture = document.getElementById("filter_future");
         const filterPast = document.getElementById("filter_past");
