@@ -35,6 +35,7 @@
     font-size: 115%;
     padding: 5px;
     opacity: 80%;
+    cursor: pointer;
 }
 
 .reservation_select
@@ -43,6 +44,7 @@
     border-radius: 10px;
     font-size: 105%;
     border: none;
+    cursor: pointer;
 }
 
 .reservation_title
@@ -53,6 +55,7 @@
 
 .reservation_input_text
 {
+    cursor: pointer;
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
@@ -64,6 +67,7 @@
 
 .reservation_submit_button
 {
+    cursor: pointer;
     border: none;
     background-color: var(--light_wood_color);
     padding: 10px;
@@ -97,6 +101,7 @@
 
 .reservation_terms_checkbox
 {
+    cursor: pointer;
     transform: scale(1.5);
 }
 
