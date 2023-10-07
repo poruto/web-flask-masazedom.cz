@@ -15,6 +15,8 @@
     --color-yellowish: rgb(97, 94, 77);
 }
 
+/* Reservation Page */
+
 .reservation_box
 {
     background-color: var(--light_wood_color);
@@ -73,12 +75,9 @@
     margin-top: 15px;
     border-radius: 5px;
     font-size: 130%;
-
     margin-right: 0;
     margin-left: auto;
-
     display:block;
-
     transition: color 1.0s ease-out, background-color 1.0s ease-out, border-radius 0.5s ease-out;
 }
 
@@ -115,11 +114,7 @@
     cursor: pointer;
 }
 
-
-body
-{
-    
-}
+/* Other */
 
 #content_box
 {
@@ -153,19 +148,6 @@ body
     opacity: 0.3;
 }
 
-.paragraph_1
-{
-    width: 50%;
-    font-size: 125%;
-}
-
-.paragraph_2
-{
-    width: 100%;
-    font-size: 125%;
-    margin: 0 auto;
-}
-
 nav
 {
     text-align: center;
@@ -189,6 +171,8 @@ nav
     background-color: var(--gray_tr_bg);
 }
 
+/* Logo that is always displayed in the middle of the page */
+
 #logo_part_1
 {
     filter: blur(1px);
@@ -203,6 +187,8 @@ nav
     height: 100%;
     z-index: -1;
 }
+
+/* Cenik Page */
 
 .price
 {
@@ -267,6 +253,8 @@ nav
     text-align: right;
 }
 
+/* Admin Panel */
+
 .atable_th
 {
     text-align: center;
@@ -302,6 +290,8 @@ nav
     transform: scale(1.5);
 }
 
+/* Contact Page */
+
 .contact_piktogram
 {
     height: 35px;
@@ -312,4 +302,75 @@ nav
 {
     padding: 15px;
     font-size: 150%;
+}
+
+/* Different types of Paragraphs */
+
+.paragraph_1
+{
+    width: 50%;
+    font-size: 125%;
+}
+
+.paragraph_2
+{
+    width: 100%;
+    font-size: 125%;
+    margin: 0 auto;
+}
+
+.paragraph_3
+{
+    width: 100%;
+    font-size: 125%;
+}
+
+/* Main Page Content */
+
+.main_1
+{
+    float: left;
+    width: 60%;
+}
+
+.main_3
+{
+    background-color: var(--light_wood_color);
+    border-radius: 50px;
+    opacity: 0.9;
+    max-width: 25%;
+    width: 100%;
+    padding: 20px;
+    float: right;
+    margin-right: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_3_image
+{
+    z-index: -1;
+    opacity: 0.075;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.main_2
+{
+    border-radius: 100px;
+    opacity: 0.95;
+    width: 300px;
+}
+
+
+@media only screen and (max-width: 1100px) 
+{
+
+
 }
