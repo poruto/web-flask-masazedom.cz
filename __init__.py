@@ -2,13 +2,14 @@ from flask import *
 from flask_session import Session
 from email_tools import *
 from reservations import *
+from OpenSSL import SSL
 
 from datetime import datetime
 
 
 # Settings
-HOST = "0.0.0.0"
-PORT = 80
+HOST = "127.0.0.1"
+PORT = 8000
 
 # Init
 app = Flask(__name__)
@@ -19,8 +20,11 @@ app.secret_key = b'Vk\xda\x97)4\xe51_\xec\x86\x94'
 Session(app)
 
 # Other flask imports
-from inject_global_vars import *
+import config
 
+@app.context_processor
+def inject_project_name():
+    return dict(project_name=config.settings["project_name"])
 
 @app.route('/')
 def index():
@@ -198,4 +202,4 @@ def session_reset():
     
 if __name__ == '__main__':
     rm = ReservationManager()
-    app.run(host=HOST, port=PORT, debug=True)
+    app.run()
