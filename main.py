@@ -119,6 +119,7 @@ def rezervace_create():
         #  Send notification to own email
         create_email = ("Založena rezervace v systému\nJméno: %s "
                         "\nPříjmení: %s"
+                        "\nBydliště: %s"
                         "\nRok narození: %s"
                         "\nEmail: %s"
                         "\nTelefon: %s"
@@ -126,7 +127,7 @@ def rezervace_create():
                         "\nČas: %s"
                         "\nTyp masáže: %s"
                         "\nPoznámky: %s") % (
-            name, surname, year, email, phone, date, time, massage_type, notes
+            name, surname, place, year, email, phone, date, time, massage_type, notes
         )
 
         client = get_my_client_email()
