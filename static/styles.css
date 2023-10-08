@@ -313,12 +313,12 @@ nav
 
 .text_margin_left
 {
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .text_margin_right
 {
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 .paragraph_1
@@ -329,9 +329,9 @@ nav
 
 .paragraph_2
 {
-    width: 100%;
+    width: 95%;
     font-size: 125%;
-    margin: 0 auto;
+    text-align: center;
 }
 
 .paragraph_3
